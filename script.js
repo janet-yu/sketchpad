@@ -198,6 +198,7 @@ class Sketchpad {
         this.ctx.lineTo(this.currentPosition.x, this.currentPosition.y);
         this.ctx.stroke();
         break;
+
       case TOOLS.rectangle:
         this.ctx.beginPath();
         this.ctx.lineJoin = "miter";
@@ -210,9 +211,10 @@ class Sketchpad {
         );
         this.ctx.stroke();
         break;
+
       case TOOLS.circle:
         this.ctx.beginPath();
-        // this.ctx.moveTo(this.startPosition.x, this.startPosition.y);
+
         let radius = distanceFormula(
           this.startPosition.x,
           this.currentPosition.x,
@@ -220,21 +222,14 @@ class Sketchpad {
           this.currentPosition.y
         );
 
-        if (this.startPosition.x - radius > 0) {
-          this.ctx.arc(
-            this.startPosition.x,
-            this.startPosition.y,
-            distanceFormula(
-              this.startPosition.x,
-              this.currentPosition.x,
-              this.startPosition.y,
-              this.currentPosition.y
-            ),
-            0,
-            Math.PI * 2
-          );
-          this.ctx.stroke();
-        }
+        this.ctx.arc(
+          this.startPosition.x,
+          this.startPosition.y,
+          radius,
+          0,
+          Math.PI * 2
+        );
+        this.ctx.stroke();
     }
   }
 
