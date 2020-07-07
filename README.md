@@ -1,4 +1,4 @@
-# Milestone 1: Sketchpad App
+# Sketchpad App
 
 This is a simple sketchpad/drawing web application built with HTML/CSS and Vanilla JavaScript. I learned a lot about manipulation the HTML canvas through this little project, and I'm pretty happy with the results!
 
