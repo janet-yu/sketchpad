@@ -16,8 +16,8 @@ const TOOLS = {
   text: "text",
 };
 
-let toolbar = document.getElementById("toolbar");
-let textToolInput = document.getElementById("text-tool-input");
+const toolbar = document.getElementById("toolbar");
+const textToolInput = document.getElementById("text-tool-input");
 
 function distanceFormula(x1, x2, y1, y2) {
   return Math.floor(Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2));
@@ -83,7 +83,7 @@ class Sketchpad {
       this.canvas.height
     );
 
-    if (this.savedActions.length === 5) {
+    if (this.savedActions.length >= MAX_UNDOS) {
       this.savedActions.shift();
     }
 
@@ -214,7 +214,6 @@ class Sketchpad {
 
       case TOOLS.circle:
         this.ctx.beginPath();
-
         let radius = distanceFormula(
           this.startPosition.x,
           this.currentPosition.x,
@@ -263,7 +262,7 @@ class Sketchpad {
   }
 
   clearCanvas() {
-    if (this.savedActions.length === MAX_UNDOS) {
+    if (this.savedActions.length >= MAX_UNDOS) {
       this.savedActions.shift();
     }
     this.savedActions.push(
@@ -308,23 +307,23 @@ class Sketchpad {
 }
 
 window.addEventListener("load", function () {
-  let sketchpad = new Sketchpad();
-  let colorsBtns = document.querySelectorAll(".color");
-  let toolsBtns = document.querySelectorAll(".tool");
+  const sketchpad = new Sketchpad();
+  const colorsBtns = document.querySelectorAll(".color");
+  const toolsBtns = document.querySelectorAll(".tool");
 
   // individual tools
-  let penSlider = document.getElementById("pen-slider");
-  let eraserSlider = document.getElementById("eraser-slider");
-  let shapesSlider = document.getElementById("shapes-slider");
-  let fontSize = document.getElementById("font-size");
-  let fontFamily = document.getElementById("font-family");
+  const penSlider = document.getElementById("pen-slider");
+  const eraserSlider = document.getElementById("eraser-slider");
+  const shapesSlider = document.getElementById("shapes-slider");
+  const fontSize = document.getElementById("font-size");
+  const fontFamily = document.getElementById("font-family");
 
   // actions
-  let trash = document.getElementById("trash");
-  let undoBtn = document.getElementById("undo");
-  let gridCheck = document.getElementById("grid-toggle");
+  const trash = document.getElementById("trash");
+  const undoBtn = document.getElementById("undo");
+  const gridCheck = document.getElementById("grid-toggle");
 
-  let grid = document.getElementById("grid");
+  const grid = document.getElementById("grid");
 
   // set up event listeners for the color buttons
   for (let i = 0; i < colorsBtns.length; i++) {

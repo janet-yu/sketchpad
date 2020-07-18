@@ -1,7 +1,8 @@
-# Sketchpad App
+# Milestone 1: Sketchpad App
 
 This is a simple sketchpad/drawing web application built with HTML/CSS and Vanilla JavaScript. I learned a lot about manipulation the HTML canvas through this little project, and I'm pretty happy with the results!
 
+## [Try it out!](https://condescending-curran-500ec8.netlify.app/) 
 # Screenshots
 On Chrome v81.0.4044.92
 ![Sketchpad Screenshot](sketchpad.png "Optional Title")
